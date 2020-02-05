@@ -30,6 +30,10 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder();
     }
 
+    /*
+    CSRF (Cross-Site Request Forgery) es un ataque que falsifica una petición a un servidor web haciéndose pasar por un usuario de confianza.
+    Esto se puede hacer, por ejemplo, incluyendo parámetros maliciosos en una URL después de un enlace que pretende redirigir a otro sitio.
+     */
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
         /*
@@ -66,4 +70,14 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
         source.registerCorsConfiguration("/**", new CorsConfiguration().applyPermitDefaultValues());
         return source;
     }
+    /*
+    El Intercambio de Recursos de Origen Cruzado (CORS) es un mecanismo que utiliza cabeceras HTTP adicionales para permitir que un user agent
+    obtenga permiso para acceder a recursos seleccionados desde un servidor, en un origen distinto (dominio) al que pertenece.
+
+    Un agente crea una petición HTTP de origen cruzado cuando solicita un recurso desde un dominio distinto, un protocolo o un puerto diferente al
+    del documento que lo generó.
+
+    El estándar de Intercambio de Recursos de Origen Cruzado trabaja añadiendo nuevas cabeceras HTTP que permiten
+    a los servidores describir el conjunto de orígenes que tienen permiso para leer la información usando un explorador web.
+     */
 }
